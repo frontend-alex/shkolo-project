@@ -1,41 +1,42 @@
-'use client'
+"use client";
 
-import { Language } from "@/constants/translation";
+import { toast } from "react-toastify";
 import { createContext, ReactNode, useEffect, useState } from "react";
 
 export interface LanguageContextInterface {
-    language: string ;
-    setLanguage: (lang: string) => void;
-    setLanguageHandler: (lang: string) => void
+  language: string;
+  changeLanguage: (lang: string) => void;
 }
 
 interface LanguageProviderProps {
-    children: ReactNode;
+  children: ReactNode;
 }
-export const LanguageContext = createContext<LanguageContextInterface | undefined>(undefined);
+export const LanguageContext = createContext<
+  LanguageContextInterface | undefined
+>(undefined);
 
-export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const [language, setLanguage] = useState('gb');
+export const LanguageProvider: React.FC<LanguageProviderProps> = ({
+  children,
+}) => {
+  const [language, setLanguage] = useState<string>(() => {
+    const storedLanguage = localStorage.getItem("language");
+    return storedLanguage ? storedLanguage : "sh";
+  });
 
-  const setLanguageHandler = (lang: string) => {
-    setLanguage(lang);
+  useEffect(() => {
+    localStorage.setItem("language", language);
+  }, [language]);
+
+  const changeLanguage = (lng: string) => {
+    setLanguage(lng);
+    toast.success("Language changed successfully!");
   };
 
-  useEffect(() => {
-    const storedLanguage = localStorage.getItem('language') as Language | null;
-    if (storedLanguage) {
-      setLanguage(storedLanguage);
-    } else {
-      setLanguage('gb');
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('language', language);
-  }, [language]);
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, setLanguageHandler }}>
+    <LanguageContext.Provider value={{ language, changeLanguage }}>
       {children}
     </LanguageContext.Provider>
   );
 };
+
+export default LanguageContext;

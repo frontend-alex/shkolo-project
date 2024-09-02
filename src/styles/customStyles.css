@@ -6,6 +6,10 @@
   @apply grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3;
 }
 
+.grid-4 {
+  @apply grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4;
+}
+
 .flex-center {
   @apply flex justify-center items-center;
 }
@@ -85,5 +89,118 @@
   @apply max-w-[105rem] mx-auto px-5 relative;
 }
 .input {
-  @apply bg-neutral-100 dark:bg-neutral-900 outline-none p-2 text-stone-400 text-sm placeholder:text-stone-400 placeholder:text-sm rounded-md box-border;
+  @apply h-[45px] focus:ring-1 ring-neutral-200 dark:ring-neutral-800 bg-neutral-100 dark:bg-neutral-900 outline-none p-2 text-stone-400 text-sm placeholder:text-stone-400 placeholder:text-sm rounded-md box-border;
 }
+.main {
+  width: 100vw;
+  min-height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  padding: 120px 24px 160px 24px;
+  pointer-events: none;
+}
+
+.main:before {
+  @apply dark:bg-custom-radial-dark bg-custom-radial absolute z-[2] w-full h-full top-0 content-[""]
+}
+
+.main:after {
+  @apply content-[""] bg-grid-image z-[1] absolute w-full h-full top-0 opacity-[0.4] dark:invert-0 invert
+}
+
+.gradient {
+  @apply dark:bg-custom-gradient-dark bg-custom-gradient-light h-fit z-[3] w-full max-w-[640px] absolute content-[""] top-[80px] blur-[100px] saturate-150 opacity-[0.15]
+}
+
+
+@media screen and (max-width: 640px) {
+  .main {
+    padding: 0;
+  }
+}
+
+.app {
+  @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
+}
+
+.black_btn {
+  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm flex items-center justify-center;
+}
+
+.outline_btn {
+  @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm flex items-center justify-center;
+}
+
+.head_text {
+  @apply mt-5 text-5xl font-extrabold leading-[1.15] text-black dark:text-white sm:text-6xl;
+}
+
+.orange_gradient {
+  @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
+}
+
+.green_gradient {
+  @apply bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent;
+}
+
+.blue_gradient {
+  @apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
+}
+
+.desc {
+  @apply mt-5 max-w-2xl;
+}
+
+.fill-button{
+  @apply bg-black text-white rounded-md dark:bg-white dark:text-black p-2 w-max px-5 hover:bg-neutral-900 dark:hover:bg-neutral-400 transition-all dark:disabled:bg-neutral-400 disabled:bg-neutral-600 disabled:cursor-not-allowed
+}
+
+.search_input {
+  @apply block w-full placeholder:text-stone-400 rounded-md border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 py-2.5 pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
+}
+
+.copy_btn {
+  @apply w-7 h-7 rounded-full bg-white/10 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur flex justify-center items-center cursor-pointer;
+}
+
+.glassmorphism {
+  @apply rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5;
+}
+
+.prompt_layout {
+  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3;
+}
+
+/* Feed Component */
+.feed {
+  @apply mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2;
+}
+
+/* Form Component */
+.form_textarea {
+  @apply w-full flex rounded-lg h-[200px] mt-2 p-3 text-sm text-gray-500 outline-0;
+}
+
+.form_input {
+  @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0;
+}
+
+/* Nav Component */
+.logo_text {
+  @apply max-sm:hidden font-semibold text-lg text-black tracking-wide;
+}
+
+.dropdown {
+  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
+}
+
+.dropdown_link {
+  @apply text-sm  text-gray-700 hover:text-gray-500 font-medium;
+}
+
+/* PromptCard Component */
+.prompt_card {
+  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
+}
+

@@ -1,4 +1,4 @@
-export type Language = "en" | "fr" | "de";
+export type Language = "sh" | "fr" | "de";
 
 export interface TranslationKeys {}
 

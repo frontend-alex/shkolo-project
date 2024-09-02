@@ -1,6 +1,12 @@
+import "@styles/globals.css";
+
+import Navbar from "@components/Navbar";
+import NextAuthProvider from "@contexts/NextAuthContext";
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import { ThemeProvider } from "@contexts/ThemeContext";
+import { LanguageProvider } from "@contexts/LanguageContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,11 +22,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <main>
-          {children}
-        </main>
-      </body>
+      <LanguageProvider>
+        <body className={inter.className}>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <NextAuthProvider>
+              <div className="main">
+                <div className="custom-gradient-light dark:custom-gradient-dark" />
+              </div>
+
+              <main className="app">
+                <Navbar />
+                {children}
+              </main>
+
+            </NextAuthProvider>
+          </ThemeProvider>
+        </body>
+      </LanguageProvider>
     </html>
   );
 }

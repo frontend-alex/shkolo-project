@@ -9,7 +9,7 @@ import ProfileLayout from "@components/layouts/ProfileLayout";
 import { Check } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Switch } from "@components/ui/switch";
-import { Button } from "@components/ui/button";
+import { Button } from "@components/ui/button"; 
 import { ThemePreferences } from "@constants/StaticData";
 
 const Settings = () => {
@@ -49,7 +49,7 @@ const Settings = () => {
               </div>
               <div className="hidden lg:flex flex-col lg:flex-row items-center lg:col-span-2 gap-5">
                 {themePreferences.map((theme, index) => (
-                  <div className="flex-col-1">
+                  <div className="flex-col-1" key={index}>
                     <div
                       className="relative"
                       onClick={() => {

@@ -17,8 +17,8 @@ const ProfileLayout = ({ children, path }: { children: React.ReactNode, path: st
   const profileLinks = ProfileSideLinks(t);
 
   return (
-    <div className="grid-4 gap-5">
-      <div className="flex-col-10">
+    <div className="grid-4 gap-5 mb-5 lg:mb-0">
+      <div className="hidden lg:flex flex-col gap-10">
         <div className="flex-col-3">
           <Image
             src={session?.user?.image as string}

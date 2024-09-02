@@ -33,7 +33,7 @@ const Profile = () => {
             Welcome to your personalized profile page. Share your exceptional
             prompts and inspire others with the power of your imagination
           </p>
-          <div className="grid-2 gap-5 mb-5 lg:mb-0">
+          <div className="grid-2 gap-5">
             {profileDataCards.map((item, index) => (
               <div
                 key={index}

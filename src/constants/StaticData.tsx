@@ -55,6 +55,16 @@ export const NavbarDropdownLinks = (
     icon: <User size={15} />,
   },
   {
+    name: "Settings",
+    path: "/settings",
+    icon: <Settings size={15} />,
+  },
+  {
+    name: "Posts",
+    path: "/posts",
+    icon: <Notebook size={15} />,
+  },
+  {
     name: "Create Post",
     path: "/create-post",
     icon: <Plus size={15} />,

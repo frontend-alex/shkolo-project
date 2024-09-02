@@ -7,7 +7,7 @@ import ProfileLayout from "@components/layouts/ProfileLayout";
 import { useSession } from "next-auth/react";
 import { ProfileDataCards } from "@constants/StaticData";
 
-const page = () => {
+const Profile = () => {
   const { t } = useTranslation();
   const { data: session } = useSession();
   const profileDataCards = ProfileDataCards(t, {
@@ -53,4 +53,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Profile;

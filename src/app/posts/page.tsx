@@ -3,7 +3,7 @@
 import ProfileLayout from "@components/layouts/ProfileLayout";
 import React, { useEffect, useState } from "react";
 
-const page = () => {
+const Posts = () => {
   const [ path, setPath ] = useState<string>('')
 
   useEffect(() => {
@@ -25,4 +25,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Posts;

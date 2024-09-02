@@ -1,19 +1,18 @@
 "use client";
 
-import Image from "next/image";
+import Line from "@components/ui/line";
 import React, { useEffect, useState } from "react";
 import useTranslation from "@hooks/useTranslation";
+import ThemeButton from "@components/ui/theme-button";
 import ProfileLayout from "@components/layouts/ProfileLayout";
 
-import { useTheme } from "next-themes";
-import { ThemePreferences } from "@constants/StaticData";
-import Line from "@components/ui/line";
 import { Check } from "lucide-react";
+import { useTheme } from "next-themes";
 import { Switch } from "@components/ui/switch";
-import ThemeButton from "@components/ui/theme-button";
 import { Button } from "@components/ui/button";
+import { ThemePreferences } from "@constants/StaticData";
 
-const page = () => {
+const Settings = () => {
   const { t } = useTranslation();
   const { setTheme } = useTheme();
   const themePreferences = ThemePreferences(t);
@@ -120,4 +119,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Settings;

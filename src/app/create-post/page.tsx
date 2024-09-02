@@ -3,7 +3,7 @@
 import ProfileLayout from "@components/layouts/ProfileLayout";
 import CreatePostController from "@controllers/CreatePostController";
 
-const MyProfile = () => {
+const CreatePosts = () => {
   const { data, onChange, path } = CreatePostController();
 
   // const router = useRouter();
@@ -90,4 +90,4 @@ const MyProfile = () => {
   );
 };
 
-export default MyProfile;
+export default CreatePosts;

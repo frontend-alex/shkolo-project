@@ -5,7 +5,7 @@ const page = () => {
   return (
     <section className="min-h-[80vh] w-full flex-center flex-col">
       <h1 className="head_text text-center">
-        Tired of Shkolo’s
+        Tired of Shkolo&apos;s
         <br className="max-md:hidden" />
         <span className="orange_gradient text-center"> Grading Nonsense</span>
       </h1>
@@ -13,7 +13,7 @@ const page = () => {
         Tired of Shkolo messing with your grades? GradeEcho is the place to let
         it all out. Whether you're annoyed, confused, or just over it, share
         your thoughts here. Join the convo and see what others are saying too.
-        Let’s keep it real.
+        Let&apos;s keep it real.
       </p>
 
       <Feed />

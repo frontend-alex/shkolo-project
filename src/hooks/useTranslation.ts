@@ -2,11 +2,12 @@
 
 import { useContext } from 'react';
 
+import { TLanguageContext } from '@constants/Types';
+import { LanguageContext } from '@/contexts/LanguageContext';
 import { Language, translations } from '@/constants/translation';
-import { LanguageContext, LanguageContextInterface } from '@/contexts/LanguageContext';
 
 const useTranslation = () => {
-    const { language } = useContext(LanguageContext) as LanguageContextInterface
+    const { language } = useContext(LanguageContext) as TLanguageContext
 
     const t = (key: keyof typeof translations[Language]) => {
         return translations[language][key] || null

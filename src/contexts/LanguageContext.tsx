@@ -2,19 +2,11 @@
 
 import { toast } from "react-toastify";
 import { createContext, ReactNode, useEffect, useState, useCallback } from "react";
+import { TChildren, TChildrens, TLanguageContext } from "@constants/Types";
 
-export interface LanguageContextInterface {
-  language: string;
-  changeLanguage: (lang: string) => void;
-}
+export const LanguageContext = createContext<TLanguageContext | undefined>(undefined);
 
-interface LanguageProviderProps {
-  children: ReactNode;
-}
-
-export const LanguageContext = createContext<LanguageContextInterface | undefined>(undefined);
-
-export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
+export const LanguageProvider: React.FC<TChildrens> = ({ children }) => {
   const [language, setLanguage] = useState<string>(() => {
     if (typeof window !== "undefined") {
       const storedLanguage = localStorage.getItem("language");

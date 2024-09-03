@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@contexts/ThemeContext";
 import { LanguageProvider } from "@contexts/LanguageContext";
+import SettingsProvider from "@contexts/SettingsContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,21 +24,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <LanguageProvider>
-        <body className={inter.className}>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <NextAuthProvider>
-              <div className="main">
-                <div className="custom-gradient-light dark:custom-gradient-dark" />
-              </div>
+        <SettingsProvider>
+          <body className={inter.className}>
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+              <NextAuthProvider>
+                <div className="main">
+                  <div className="custom-gradient-light dark:custom-gradient-dark" />
+                </div>
 
-              <main className="app">
-                <Navbar />
-                {children}
-              </main>
-
-            </NextAuthProvider>
-          </ThemeProvider>
-        </body>
+                <main className="app">
+                  <Navbar />
+                  {children}
+                </main>
+              </NextAuthProvider>
+            </ThemeProvider>
+          </body>
+        </SettingsProvider>
       </LanguageProvider>
     </html>
   );

@@ -10,64 +10,42 @@ import {
   IdCard,
   Notebook,
   NotebookPenIcon,
+  Pen,
   Plus,
   Settings,
   Shield,
   User,
 } from "lucide-react";
 
-export const ProfileSideLinks = (
-  t: (ar0: keyof (typeof translations)[Language]) => any
-): TProfileSidebarLinks[] => [
-  {
-    name: "Profile",
-    path: "/profile",
-    icon: <User size={30} />,
-  },
-  {
-    name: "Settings",
-    path: "/settings",
-    icon: <Settings size={30} />,
-  },
-  {
-    name: "Posts",
-    path: "/posts",
-    icon: <Notebook size={30} />,
-  },
-  {
-    name: "Create A Post",
-    path: "/create-post",
-    icon: <NotebookPenIcon size={30} />,
-  },
-];
 
 export const NavbarDropdownLinks = (
-  t: (ar0: keyof (typeof translations)[Language]) => any
+  t: (ar0: keyof (typeof translations)[Language]) => any,
+  size: number
 ): TNavbarDropdownLinks[] => [
   {
     name: "Home",
     path: "/",
-    icon: <Home size={15} />,
+    icon: <Home size={size} />,
   },
   {
     name: "Profile",
     path: "/profile",
-    icon: <User size={15} />,
+    icon: <User size={size} />,
   },
   {
     name: "Settings",
     path: "/settings",
-    icon: <Settings size={15} />,
+    icon: <Settings size={size} />,
   },
   {
     name: "Posts",
     path: "/posts",
-    icon: <Notebook size={15} />,
+    icon: <Notebook size={size} />,
   },
   {
     name: "Create Post",
     path: "/create-post",
-    icon: <Plus size={15} />,
+    icon: <Plus size={size} />,
   },
 ];
 

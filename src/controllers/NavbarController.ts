@@ -11,7 +11,7 @@ const NavbarController = () => {
   const [providers, setProviders] = useState<any>(null);
   const [toggleDropdown, setToggleDropdown] = useState<boolean>(false);
 
-  const navbarDropdownLinks = NavbarDropdownLinks(t)
+  const navbarDropdownLinks = NavbarDropdownLinks(t, 15)
 
   useEffect(() => {
     const getProvidersFunc = async () => {

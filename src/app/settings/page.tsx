@@ -1,28 +1,29 @@
 "use client";
 
 import Line from "@components/ui/line";
-import React, { useEffect, useState } from "react";
-import useTranslation from "@hooks/useTranslation";
+import React, { useContext } from "react";
 import ThemeButton from "@components/ui/theme-button";
 import ProfileLayout from "@components/layouts/ProfileLayout";
+import SettingsController from "@controllers/SettingsController";
 
 import { Check } from "lucide-react";
-import { useTheme } from "next-themes";
 import { Switch } from "@components/ui/switch";
-import { Button } from "@components/ui/button"; 
-import { ThemePreferences } from "@constants/StaticData";
+import { Button } from "@components/ui/button";
+import { SettingsContext } from "@contexts/SettingsContext";
+import { TSettingsContext } from "@constants/Types";
 
 const Settings = () => {
-  const { t } = useTranslation();
-  const { setTheme } = useTheme();
-  const themePreferences = ThemePreferences(t);
 
-  const [path, setPath] = useState<string>("");
-  const [toggleIndex, setToggleIndex] = useState<number>(0);
+  const {
+    setTheme,
+    t,
+    setToggleIndex,
+    toggleIndex,
+    themePreferences,
+    path,
+  } = SettingsController();
 
-  useEffect(() => {
-    setPath(window.location.pathname);
-  }, []);
+  const { setBackground } = useContext(SettingsContext) as TSettingsContext
 
   return (
     <div className="w-full">
@@ -45,7 +46,7 @@ const Settings = () => {
                 <p>Selec or customize your UI theme.</p>
               </div>
               <div className="flex lg:hidden mt-2">
-                <ThemeButton/>
+                <ThemeButton />
               </div>
               <div className="hidden lg:flex flex-col lg:flex-row items-center lg:col-span-2 gap-5">
                 {themePreferences.map((theme, index) => (
@@ -92,27 +93,31 @@ const Settings = () => {
                 <h1>Transparent background</h1>
                 <p>Make the account panel background transparent.</p>
               </div>
-              <Switch/>
+              <Switch onCheckedChange={() => setBackground(prev => !prev)} />
             </div>
           </div>
           {/* transparent background */}
 
           {/* account deletion*/}
           <div className="flex-col-3">
-            <Line/>
+            <Line />
             <div className="flex-col-2">
-                <h1>Account management</h1>
-                <p>You can either deactive or permanently delete your account.</p>
+              <h1>Account management</h1>
+              <p>You can either deactive or permanently delete your account.</p>
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-3">
-              <Button variant={'destructive'} className="opacity-50 w-full lg:w-max">Deactivate Account</Button>
-              <Button variant={'destructive'} className="w-full lg:w-max">Delete Account</Button>
+              <Button
+                variant={"destructive"}
+                className="opacity-50 w-full lg:w-max"
+              >
+                Deactivate Account
+              </Button>
+              <Button variant={"destructive"} className="w-full lg:w-max">
+                Delete Account
+              </Button>
             </div>
-
           </div>
           {/* account deletion*/}
-
-
         </div>
       </ProfileLayout>
     </div>

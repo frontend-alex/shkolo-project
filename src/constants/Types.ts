@@ -36,6 +36,15 @@ export type TProfileDataCard<T> = {
     icon: TChildren
 };
 
+export type TLanguagesSwitch = {
+    name: string;
+    language: string;
+}
+
+export type TSignInButton = {
+    className ?: string;
+}
+
 export type TProfileDataCards<T> = TProfileDataCard<T>[];
 
 

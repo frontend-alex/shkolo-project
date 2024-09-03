@@ -1,4 +1,5 @@
 import {
+  TLanguagesSwitch,
   TNavbarDropdownLinks,
   TProfileDataCards,
   TProfileSidebarLinks,
@@ -95,5 +96,20 @@ export const ThemePreferences = (
     name: "Dark",
     setter: "dark",
     image: "/assets/icons/dark.png",
+  },
+];
+
+export const footerLanguages: TLanguagesSwitch[] = [
+  {
+    name: "English",
+    language: "sh",
+  },
+  {
+    name: "French",
+    language: "fr",
+  },
+  {
+    name: "Dutch",
+    language: "de",
   },
 ];

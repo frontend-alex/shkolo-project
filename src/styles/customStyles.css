@@ -216,3 +216,14 @@
 .bg-b-c{
   @apply bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800
 }
+
+.Toastify__toast {
+  @apply dark:bg-neutral-900 bg-neutral-100
+
+}
+.Toastify__toast-body {
+  @apply text-stone-400 text-sm dark:bg-neutral-900
+}
+.skeleton{
+  @apply bg-neutral-300 dark:bg-neutral-700 w-full
+}

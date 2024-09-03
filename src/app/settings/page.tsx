@@ -11,6 +11,7 @@ import { Switch } from "@components/ui/switch";
 import { Button } from "@components/ui/button";
 import { SettingsContext } from "@contexts/SettingsContext";
 import { TSettingsContext } from "@constants/Types";
+import LanguageDropdown from "@components/ui/language-dropdown";
 
 const Settings = () => {
 
@@ -97,6 +98,19 @@ const Settings = () => {
             </div>
           </div>
           {/* transparent background */}
+
+          {/* language preferences */}
+          <div className="flex-col-3">
+            <Line />
+            <div className="flex-between">
+              <div className="flex-col-2 w-full">
+                <h1>Language</h1>
+                <p>Find the most suitable language for your profile.</p>
+              </div>
+              <LanguageDropdown/>
+            </div>
+          </div>
+          {/*  language preferences */}
 
           {/* account deletion*/}
           <div className="flex-col-3">

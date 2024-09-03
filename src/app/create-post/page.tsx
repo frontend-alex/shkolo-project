@@ -4,7 +4,7 @@ import ProfileLayout from "@components/layouts/ProfileLayout";
 import CreatePostController from "@controllers/CreatePostController";
 
 const CreatePosts = () => {
-  const { data, onChange, path } = CreatePostController();
+  const { data, onChange, path, onSubmit} = CreatePostController();
 
   // const router = useRouter();
   // const { data: session }: any = useSession();
@@ -60,7 +60,7 @@ const CreatePosts = () => {
             </p>
           </div>
 
-          <form className="flex-col-3">
+          <form className="flex-col-3" onSubmit={onSubmit}>
             <div className="flex-col-2">
               <label>Heading</label>
               <input
@@ -81,7 +81,7 @@ const CreatePosts = () => {
               />
             </div>
             <div className="flex justify-end">
-              <button disabled className="fill-button">Create Post</button>
+              <button className="fill-button">Create Post</button>
             </div>
           </form>
         </div>

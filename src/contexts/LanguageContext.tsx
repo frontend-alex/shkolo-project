@@ -23,7 +23,6 @@ export const LanguageProvider: React.FC<TChildrens> = ({ children }) => {
 
   const changeLanguage = useCallback((lng: string) => {
     setLanguage(lng);
-    toast.success("Language changed successfully!");
   }, []);
 
   return (

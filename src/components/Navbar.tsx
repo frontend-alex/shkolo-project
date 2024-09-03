@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import SignInButton from "./ui/sign-in-button";
 import NavbarController from "@controllers/NavbarController";
 
-import { signIn, signOut } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,13 +15,13 @@ import {
   DropdownMenuTrigger,
 } from "@components/ui/dropdown-menu";
 import { LogOut } from "lucide-react";
+import { Skeleton } from "./ui/skeleton";
+import { SmallProfileImage } from "./ui/loading-items";
 
 const Navbar = () => {
   const {
+    status,
     session,
-    providers,
-    toggleDropdown,
-    setToggleDropdown,
     navbarDropdownLinks,
   } = NavbarController();
 
@@ -33,13 +34,7 @@ const Navbar = () => {
           <div className="flex gap-3 md:gap-5">
             <DropdownMenu>
               <DropdownMenuTrigger>
-                <Image
-                  src={session.user.image as string}
-                  width={37}
-                  height={37}
-                  className="rounded-full"
-                  alt="profile"
-                />
+              <SmallProfileImage status={status} session={session}/>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-48 mt-2" align="end">
                 {navbarDropdownLinks.map((link, index) => (
@@ -67,21 +62,7 @@ const Navbar = () => {
             </DropdownMenu>
           </div>
         ) : (
-          <>
-            {providers &&
-              Object.values(providers).map((provider: any) => (
-                <button
-                  type="button"
-                  key={provider.name}
-                  onClick={() => {
-                    signIn(provider.id);
-                  }}
-                  className="fill-button"
-                >
-                  Sign in
-                </button>
-              ))}
-          </>
+         <SignInButton/>
         )}
     </nav>
   );

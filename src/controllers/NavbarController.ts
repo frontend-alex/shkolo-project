@@ -6,7 +6,7 @@ import { NavbarDropdownLinks } from "@constants/StaticData";
 
 const NavbarController = () => {
   const { t } = useTranslation();
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
   const [providers, setProviders] = useState<any>(null);
   const [toggleDropdown, setToggleDropdown] = useState<boolean>(false);
@@ -21,7 +21,7 @@ const NavbarController = () => {
     getProvidersFunc();
   }, []);
 
-  return {session, providers, toggleDropdown, setToggleDropdown, t, navbarDropdownLinks };
+  return {session, providers, toggleDropdown, setToggleDropdown, t, navbarDropdownLinks, status };
 };
 
 export default NavbarController;

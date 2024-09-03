@@ -1,4 +1,5 @@
 import "@styles/globals.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import Navbar from "@components/Navbar";
 import NextAuthProvider from "@contexts/NextAuthContext";
@@ -8,6 +9,7 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "@contexts/ThemeContext";
 import { LanguageProvider } from "@contexts/LanguageContext";
 import SettingsProvider from "@contexts/SettingsContext";
+import { ToastContainer } from "react-toastify";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +29,18 @@ export default function RootLayout({
         <SettingsProvider>
           <body className={inter.className}>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+              <ToastContainer
+                position="bottom-right"
+                autoClose={1000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+              />
               <NextAuthProvider>
                 <div className="main">
                   <div className="custom-gradient-light dark:custom-gradient-dark" />

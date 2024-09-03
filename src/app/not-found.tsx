@@ -10,7 +10,7 @@ const Unauthorize = () => {
       <div className="flex-col-3 text-center max-w-[500px] mx-auto">
         <h1 className="text-2xl font-bold lg:text-4xl">Page Not Found</h1>
         <p>
-          Sorry, the page you're looking for doesn't exist. It might have been
+          Sorry, the page you&apos;re looking for doesn&apos;t exist. It might have been
           moved, renamed, or deleted. Please check the URL for any errors or
           return to the homepage to conti
         </p>

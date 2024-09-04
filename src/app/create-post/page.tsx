@@ -2,51 +2,11 @@
 
 import ProfileLayout from "@components/layouts/ProfileLayout";
 import CreatePostController from "@controllers/CreatePostController";
+import { Loader } from "lucide-react";
 
 const CreatePosts = () => {
-  const { data, onChange, path, onSubmit} = CreatePostController();
 
-  // const router = useRouter();
-  // const { data: session }: any = useSession();
-
-  // const [myPosts, setMyPosts] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchPosts = async () => {
-  //     const response = await fetch(`/api/users/${session?.user.id}/posts`);
-  //     const data = await response.json();
-
-  //     setMyPosts(data);
-  //   };
-
-  //   if (session?.user.id) fetchPosts();
-  // }, [session?.user.id]);
-
-  // const handleEdit = (post: { _id: string }) => {
-  //   router.push(`/update-prompt?id=${post._id}`);
-  // };
-
-  // const handleDelete = async (post: { _id: { toString: () => any } }) => {
-  //   const hasConfirmed = confirm(
-  //     "Are you sure you want to delete this prompt?"
-  //   );
-
-  //   if (hasConfirmed) {
-  //     try {
-  //       await fetch(`/api/prompt/${post._id.toString()}`, {
-  //         method: "DELETE",
-  //       });
-
-  //       const filteredPosts = myPosts.filter(
-  //         (item: { _id: string }) => item._id !== post._id
-  //       );
-
-  //       setMyPosts(filteredPosts);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  // };
+  const { onChange, path, onSubmit, isPending } = CreatePostController();
 
   return (
     <div className="w-full">
@@ -75,13 +35,13 @@ const CreatePosts = () => {
               <label>Content</label>
               <textarea
                 onChange={onChange}
-                name="description"
+                name="content"
                 className="input min-h-[300px]"
                 placeholder="The quick brown fox jump over the white fence.."
               />
             </div>
             <div className="flex justify-end">
-              <button className="fill-button">Create Post</button>
+              <button disabled={isPending} className="fill-button flex-3">{isPending ? <Loader size={15} className="animate-spin"/> : ""}Create Post</button>
             </div>
           </form>
         </div>

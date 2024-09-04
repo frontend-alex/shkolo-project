@@ -9,7 +9,7 @@ const SettingsProvider: React.FC<TChildrens> = ({children}) => {
 
   const [background, setBackground ] = useState(() => {
     if(typeof window !== 'undefined'){
-      const storedLanguage = localStorage.getItem("backgroundColor");
+      const storedLanguage = JSON.parse(localStorage.getItem("backgroundColor") || "") 
       return storedLanguage || false;
     }
     return false
@@ -17,7 +17,7 @@ const SettingsProvider: React.FC<TChildrens> = ({children}) => {
 
   useEffect(() => {
     if(typeof window !== 'undefined'){
-      localStorage.setItem('backgroundColor', JSON.stringify(false))
+      localStorage.setItem('backgroundColor', JSON.stringify(background))
     }
   }, [background])
 

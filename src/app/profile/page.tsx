@@ -46,7 +46,6 @@ const Profile = () => {
                     </div>
                     <div className="flex flex-col lg:flex-row gap-3 items-center">
                       <Button className="flex items-center gap-3" variant={'outline'}><Link size={15}/>Copy Link</Button>
-                      <Button variant={'outline'}>View Profile</Button>
                     </div>  
                   </div>
                   <div className="flex-col-3"> 

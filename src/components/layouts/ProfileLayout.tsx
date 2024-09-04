@@ -29,7 +29,7 @@ const ProfileLayout = ({ children, path }: TProfileLayout) => {
     <div
       className={`${
         background ? " bg-b-c" : ""
-      } lg:p-8 grid-4 gap-5 mb-5 lg:mb-0 rounded-md`}
+      } grid-4 gap-5 mb-5 lg:mb-0 rounded-md p-5`}
     >
       <div className="hidden lg:flex flex-col gap-10">
         <div className="flex-col-3">

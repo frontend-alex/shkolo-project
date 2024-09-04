@@ -1,27 +1,9 @@
 import { Schema, model, models } from 'mongoose';
+import { UserSchema } from './User';
 
-// const UserSchema = new Schema
-
-const PostSchema = new Schema({
+export const PostSchema = new Schema({
   creator: {
-    type: new Schema({
-      _id: {
-        type: Schema.Types.ObjectId,
-        required: true,
-      },
-      email: {
-        type: String,
-        required: true,
-      },
-      username: {
-        type: String,
-        required: true,
-      },
-      image: {
-        type: String,
-        required: false, 
-      }
-    }),
+    type: UserSchema,
     required: true
   },  
   postHeading: {
@@ -32,7 +14,7 @@ const PostSchema = new Schema({
     type: String,
     required: [true, 'Description is required.'],
   }
-});
+}, { timestamps: true });
 
 const Post = models.Post || model('Post', PostSchema);
 

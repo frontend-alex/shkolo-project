@@ -6,10 +6,11 @@ export const GET = async (req: Request, res: Response) => {
         
         await db();
 
-        const posts = Post.find({}).populate('creator');
+        const posts = await Post.find().lean();
         return new Response(JSON.stringify(posts), { status: 201 });
 
     } catch(err){
+        console.log(err)
         return new Response("Failed to fetch", { status: 500 })
     }
 }

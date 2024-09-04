@@ -20,8 +20,12 @@ const Unauthorize = () => {
           understanding.
         </p>
         <div className="flex flex-col lg:flex-row gap-4">
-        <Button variant={'outline'} className="w-full"><Link href="/profile">Go Back</Link></Button>
-        <SignInButton className="w-full"/>
+          <Link href="/" className="w-full">
+            <Button variant={"outline"} className="w-full">
+              Go Back
+            </Button>
+          </Link>
+          <SignInButton className="w-full" />
         </div>
       </div>
     </div>

@@ -5,16 +5,15 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useScroll, useTransform } from "framer-motion";
 import { Dispatch, SetStateAction, useRef } from "react";
-import { X } from "lucide-react";
 import PostCard from "@components/cards/PostCard";
 
 export const ParallaxScroll = ({
-  images,
+  data,
   className,
   expandAll,
   setExpandAll,
 }: {
-  images: string[];
+  data: any[];
   className?: string;
   expandAll?: boolean;
   setExpandAll?: Dispatch<SetStateAction<boolean>> | undefined;
@@ -29,11 +28,11 @@ export const ParallaxScroll = ({
   const translateSecond = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const translateThird = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
-  const third = Math.ceil(images.length / 3);
+  const third = Math.ceil(data.length / 3);
 
-  const firstPart = images.slice(0, third);
-  const secondPart = images.slice(third, 2 * third);
-  const thirdPart = images.slice(2 * third);
+  const firstPart = data.slice(0, third);
+  const secondPart = data.slice(third, 2 * third);
+  const thirdPart = data.slice(2 * third);
 
   return (
     <div
@@ -49,7 +48,9 @@ export const ParallaxScroll = ({
     >
       <motion.div
         className={`h-[20rem] w-full absolute transition-all bottom-0 z-[100] ${
-          !expandAll ? "bg-white-transparent-gradient" : ""
+          !expandAll
+            ? "bg-white-transparent-gradient dark:bg-none"
+            : ""
         }`}
         initial={{ opacity: 1, height: "20rem" }}
         animate={{
@@ -64,41 +65,43 @@ export const ParallaxScroll = ({
       />
 
       <button
-        className="hidden lg:flex fixed bg-white border-lg p-2 rounded-lg bottom-10 left-1/2 -translate-x-1/2 z-[10000]"
+        className="hidden lg:flex fixed text-black bg-white border-lg p-2 rounded-lg bottom-10 left-1/2 -translate-x-1/2 z-[10000]"
         onClick={() => setExpandAll?.((prev) => !prev)}
       >
         {expandAll ? "Close" : "View All"}
       </button>
       <div
-        className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start  max-w-5xl mx-auto gap-10"
+        className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start  max-w-5xl mx-auto gap-3 lg:gap-5"
         ref={gridRef}
       >
         <div className="grid gap-5">
           {firstPart.map((el, idx) => (
             <motion.div style={{ y: translateFirst }} key={"grid-1" + idx}>
-              <PostCard/>
+              <PostCard {...el} />
             </motion.div>
           ))}
         </div>
         <div className="grid gap-5">
           {secondPart.map((el, idx) => (
             <motion.div style={{ y: translateSecond }} key={"grid-2" + idx}>
-              <PostCard/>
+              <PostCard {...el} />
             </motion.div>
           ))}
         </div>
         <div className="grid gap-5">
           {thirdPart.map((el, idx) => (
             <motion.div style={{ y: translateThird }} key={"grid-3" + idx}>
-              <PostCard/>
+              <PostCard {...el} />
             </motion.div>
           ))}
         </div>
-        <div
-          className={`h-[20rem] w-full absolute transition-all -bottom-44 flex items-end justify-center ${
-            expandAll ? "bg-white-transparent-gradient" : ""
-          }`}
-        />
+        {expandAll && (
+          <div
+            className={`h-[20rem] w-full absolute transition-all -bottom-44 flex items-end justify-center ${
+              expandAll ? "bg-white-transparent-gradient dark:bg-none" : ""
+            }`}
+          />
+        )}
       </div>
     </div>
   );

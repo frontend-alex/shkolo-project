@@ -33,10 +33,10 @@ const ProfileLayout = ({ children, path }: TProfileLayout) => {
     >
       <div className="hidden lg:flex flex-col gap-10">
         <div className="flex-col-3">
-          <ProfileImage status={status} session={session} />
+          <ProfileImage status={status} data={session?.user} />
           <div className="flex-col-1">
-            <Username status={status} session={session} />
-            <Email status={status} session={session} />
+            <Username status={status} data={session?.user} />
+            <Email status={status} data={session?.user} />
           </div>
         </div>
         <div className="flex-col-3">

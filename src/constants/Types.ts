@@ -78,6 +78,18 @@ export type TAccountContext = {
   user: any;
 };
 
+export type TPostCard = {
+  creator: {
+    username: string,
+    email: string; 
+    image: string,
+    id: string;
+  };
+  postHeading: string;
+  postContent: string;
+  createdAt: string;
+}
+
 //--------------------------->next-auth<-------------------------------------------//
 declare module "next-auth" {
   interface Session {

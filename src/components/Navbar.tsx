@@ -34,7 +34,7 @@ const Navbar = () => {
           <div className="flex gap-3 md:gap-5">
             <DropdownMenu>
               <DropdownMenuTrigger>
-              <SmallProfileImage status={status} session={session}/>
+              <SmallProfileImage status={status} data={session.user}/>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-48 mt-2" align="end">
                 {navbarDropdownLinks.map((link, index) => (

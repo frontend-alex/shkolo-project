@@ -10,15 +10,21 @@ export const POST = async (req: Request, res: Response) => {
 
     const user = await User.findOne({ _id: creator })
 
-    await Post.create({
+    const postCreated = await Post.create({
       creator: user,
       postHeading,
       postContent,
     })
+     
+    const d = await User.updateOne(
+      { _id: creator._id },
+      { $push: { postsMade: postCreated._id } } 
+    );
 
     return new Response("Successfully created a post!", { status: 201 });
   } catch (err) {
-    return new Response("An Error has occured, please try again later", {
+    console.log(err)
+    return new Response(`An Error has occured, please try again later: ${err}`, {
       status: 500,
     });
   }

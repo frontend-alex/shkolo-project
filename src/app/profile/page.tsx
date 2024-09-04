@@ -38,10 +38,10 @@ const Profile = () => {
                 <form className="flex-col-3">
                   <div className="flex flex-row items-center justify-between">
                     <div className="flex-col-3">
-                      <ProfileImage status={status} session={session}/>
+                      <ProfileImage status={status} data={session?.user}/>
                       <div>
-                        <Username status={status} session={session}/>
-                        <Email status={status} session={session}/>
+                        <Username status={status} data={session?.user}/>
+                        <Email status={status} data={session?.user}/>
                       </div>
                     </div>
                     <div className="flex flex-col lg:flex-row gap-3 items-center">
@@ -77,7 +77,7 @@ const Profile = () => {
                       <div className="grid-3 items-center">
                           <p className="text-black dark:text-white">Profile Image</p>
                           <div className="relative flex items-center flex-row gap-3 col-span-2">
-                            <ProfileImage status={status} session={session}/>
+                            <ProfileImage status={status} data={session?.user}/>
                             <Button variant={'outline'}>Change Picture</Button>
                           </div>    
                       </div>
@@ -100,7 +100,7 @@ const Profile = () => {
                 <div className="flex-col-1 lg:w-1/2">
                   <h1>{item.heading}</h1>
                   {status === "loading" ? (
-                    <Skeleton className="skeleton h-[10px]" />
+                    <Skeleton className="skeleton h-[10px] w-full bg-neutral-200" />
                   ) : (
                     <p>{item.paragraph as string}</p>
                   )}

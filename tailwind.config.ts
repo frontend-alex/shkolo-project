@@ -46,6 +46,7 @@ const config = {
       'custom-radial': 'radial-gradient(circle, rgba(2, 0, 36, 0) 0%, #fafafa 100%)',
       'grid-image': 'url("/assets/images/grid.svg")',
       'white-transparent-gradient': 'linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)',
+      'black-transparent-gradient': 'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)'
 
       },
       colors: {

@@ -1,9 +1,28 @@
 import { Schema, model, models } from 'mongoose';
 
+// const UserSchema = new Schema
+
 const PostSchema = new Schema({
   creator: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
+    type: new Schema({
+      _id: {
+        type: Schema.Types.ObjectId,
+        required: true,
+      },
+      email: {
+        type: String,
+        required: true,
+      },
+      username: {
+        type: String,
+        required: true,
+      },
+      image: {
+        type: String,
+        required: false, 
+      }
+    }),
+    required: true
   },  
   postHeading: {
     type: String,

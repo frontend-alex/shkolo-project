@@ -1,4 +1,4 @@
-import NextAuth, { DefaultSession } from "next-auth";
+import { DefaultSession } from "next-auth";
 
 import { Dispatch, SetStateAction } from "react";
 import { Language } from "./translation";

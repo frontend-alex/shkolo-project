@@ -8,12 +8,16 @@ export const SettingsContext = createContext<TSettingsContext | undefined>(undef
 const SettingsProvider: React.FC<TChildrens> = ({children}) => {
 
   const [background, setBackground ] = useState(() => {
+
     if(typeof window !== 'undefined'){
-      const storedLanguage = JSON.parse(localStorage.getItem("backgroundColor") || "") 
+      const storedLanguage = JSON.parse(localStorage.getItem("backgroundColor") || JSON.stringify(false))
       return storedLanguage || false;
     }
     return false
   })
+
+
+
 
   useEffect(() => {
     if(typeof window !== 'undefined'){

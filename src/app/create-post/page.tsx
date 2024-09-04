@@ -41,7 +41,7 @@ const CreatePosts = () => {
               />
             </div>
             <div className="flex justify-end">
-              <button disabled={isPending} className="fill-button flex-3">{isPending ? <Loader size={15} className="animate-spin"/> : ""}Create Post</button>
+              <button disabled={isPending} className="fill-button flex-3">Create Post {isPending ? <Loader size={15} className="animate-spin"/> : ""}</button>
             </div>
           </form>
         </div>

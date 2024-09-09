@@ -65,7 +65,7 @@ export const ParallaxScroll = ({
       />
 
       <button
-        className="hidden lg:flex fixed text-black bg-white border-lg p-2 rounded-lg bottom-10 left-1/2 -translate-x-1/2 z-[10000]"
+        className="hidden lg:flex fixed text-black bg-white border-lg p-2 rounded-lg bottom-10 left-1/2 -translate-x-1/2 z-[10000000000000000000]"
         onClick={() => setExpandAll?.((prev) => !prev)}
       >
         {expandAll ? "Close" : "View All"}

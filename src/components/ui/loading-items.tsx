@@ -26,13 +26,14 @@ export const ProfileImage = ({ status, data }: TStatus) => {
 
 
 export const SmallProfileImage = ({ status, data }: TStatus) => {
+  console.log(data)
   return (
     <>
       {status === "loading" ? (
         <Skeleton className="skeleton rounded-full h-[70px] w-[70px]" />
       ) : (
         <Image
-          src={data?.image as string}
+          src={data.image as string}
           className="rounded-full"
           height={37}
           width={37}

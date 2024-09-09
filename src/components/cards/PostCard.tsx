@@ -6,13 +6,17 @@ import { useSession } from 'next-auth/react'
 import { EllipsisVertical } from 'lucide-react'
 import { TPostCard } from '@constants/Types'
 
-const PostCard: React.FC<TPostCard> = ({ creator, postContent, postHeading }) => {
+import { format } from 'date-fns'
 
-    const { data: session, status } = useSession()
-    const { email, image, username } = creator;
+const PostCard: React.FC<TPostCard> = ({ creator, postContent, postHeading, createdAt }) => {
+
+    const { status } = useSession()
+    const { username } = creator[0];
+
+    const formatedDate = format(new Date(createdAt), 'MMMM dd, yyyy hh:mm a')
 
   return (
-    <div className='flex flex-col gap-3 bg-b-c p-3 hover:cursor-auto rounded-md'>
+    <div className='flex flex-col gap-3 bg-b-c p-3 hover:cursor-auto rounded-md z-[1]'>
         <div className='flex-between gap-5'>
             <div className='flex-3'>
                 <SmallProfileImage status={status} data={creator}/>
@@ -21,7 +25,7 @@ const PostCard: React.FC<TPostCard> = ({ creator, postContent, postHeading }) =>
                         <h1 className='text-sm'>{username}</h1>
                         <p className='text-[10px]'>created a post</p>
                     </div>
-                    <p className='text-[12px] -mt-1'>April 10.2028</p>
+                    <p className='text-[12px] -mt-1'>{formatedDate}</p>
                 </div>
             </div>
             <EllipsisVertical size={15} className='cursor-pointer'/>

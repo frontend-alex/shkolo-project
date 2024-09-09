@@ -84,7 +84,7 @@ export type TPostCard = {
     email: string; 
     image: string,
     id: string;
-  };
+  }[];
   postHeading: string;
   postContent: string;
   createdAt: string;

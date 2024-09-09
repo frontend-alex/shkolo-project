@@ -12,8 +12,6 @@ const Feed = ({ expandAll, setExpandAll }: TFeed) => {
     searchedResults,
     allPosts,
   } = FeedController();
-
-
   return (
     <section className="flex-col-10">
       <form
@@ -26,7 +24,7 @@ const Feed = ({ expandAll, setExpandAll }: TFeed) => {
           <input
             type="text"
             placeholder="Search for a tag or a username"
-            value={searchText}
+            // value={searchText}
             // onChange={handleSearchChange}
             required
             className="input w-full lg:w-[400px] px-10"

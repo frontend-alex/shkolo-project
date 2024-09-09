@@ -1,7 +1,7 @@
 'use client'
 
 import axios from "axios";
-import React, {  useState, useEffect } from "react";
+import {  useState, useEffect } from "react";
 
 const FeedController = () => {
   const [allPosts, setAllPosts] = useState([]);
@@ -12,13 +12,14 @@ const FeedController = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const posts = await axios.get('/api/posts')
-      setAllPosts(posts.data)
+      axios.get('/api/posts')
+        .then(res => setAllPosts(res.data))
+        .catch(err => console.log(err))
     }
     fetchPosts()
   }, [])
  
-  return { searchText, searchedResults, allPosts};
+  return { searchText, searchedResults, allPosts };
 };
 
 export default FeedController;

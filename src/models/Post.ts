@@ -1,11 +1,11 @@
 import { Schema, model, models } from 'mongoose';
-import { UserSchema } from './User';
 
 export const PostSchema = new Schema({
-  creator: {
-    type: UserSchema,
+  creator: [{
+    type: Schema.Types.ObjectId,
+    ref: "User",
     required: true
-  },  
+  }],
   postHeading: {
     type: String,
     required: [true, 'heading is required.'],
@@ -16,6 +16,6 @@ export const PostSchema = new Schema({
   }
 }, { timestamps: true });
 
-const Post = models.Post || model('Post', PostSchema);
+const   Post = models.Post || model('Post', PostSchema);
 
 export default Post;

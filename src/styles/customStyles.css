@@ -232,6 +232,6 @@
   display: none;
 }
 
-.disable-scrollbar::-webkit-scrollbar-thumb{
+.disable-scrollbar::-webkit-scrollbar-tu{
   display: none;
 }

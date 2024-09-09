@@ -1,31 +1,37 @@
 import { db } from "@lib/db";
 import Post from "@models/Post";
-import { User } from "@models/User";
+import { User }  from "@models/User";
 
-export const POST = async (req: Request, res: Response) => {
+export const POST = async (req: Request) => {
   const { creator, postContent, postHeading } = await req.json();
 
   try {
     await db();
 
-    const user = await User.findOne({ _id: creator })
-
     const postCreated = await Post.create({
-      creator: user,
+      creator,
       postHeading,
       postContent,
-    })
-     
-    const d = await User.updateOne(
-      { _id: creator._id },
-      { $push: { postsMade: postCreated._id } } 
+    });
+
+    const updatedUser = await User.findByIdAndUpdate(
+      creator,
+      {
+        $push: { postsMade: postCreated._id },
+      },
+      { new: true, useFindAndModify: false }
     );
+
+    updatedUser.save();
 
     return new Response("Successfully created a post!", { status: 201 });
   } catch (err) {
-    console.log(err)
-    return new Response(`An Error has occured, please try again later: ${err}`, {
-      status: 500,
-    });
+    console.log(err);
+    return new Response(
+      `An Error has occured, please try again later: ${err}`,
+      {
+        status: 500,
+      }
+    );
   }
 };

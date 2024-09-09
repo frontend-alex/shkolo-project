@@ -19,6 +19,7 @@ const NavbarController = () => {
       setProviders(res);
     };
     getProvidersFunc();
+
   }, []);
 
   return {session, providers, toggleDropdown, setToggleDropdown, t, navbarDropdownLinks, status };

@@ -10,12 +10,10 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@components/ui/dropdown-menu";
 import { LogOut } from "lucide-react";
-import { Skeleton } from "./ui/skeleton";
 import { SmallProfileImage } from "./ui/loading-items";
 
 const Navbar = () => {

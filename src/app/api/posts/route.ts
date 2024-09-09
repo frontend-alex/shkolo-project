@@ -6,7 +6,7 @@ export const GET = async (req: Request, res: Response) => {
         
         await db();
 
-        const posts = await Post.find().lean();
+        const posts = await Post.find().lean().populate('creator');
         return new Response(JSON.stringify(posts), { status: 201 });
 
     } catch(err){

@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Shkolo Project
 
-## Getting Started
+A Next.js post-sharing prototype with Google sign-in, user records, and MongoDB-backed posts.
 
-First, run the development server:
+## Current status
+
+Learning prototype. The implemented post and account flows are narrower than a complete school-management platform.
+
+## Features and implementation
+
+- Next.js App Router pages for posts, post creation, profile, and settings.
+- NextAuth Google provider and MongoDB user persistence.
+- Route handlers for listing, retrieving, and creating posts.
+- Reusable UI components, themes, and TypeScript types.
+
+## Technology
+
+Next.js 14, React 18, TypeScript, NextAuth, MongoDB/Mongoose, Tailwind CSS, and Radix UI.
+
+## Repository map
+
+| Path | Purpose |
+| --- | --- |
+| [src/app](<src/app>) | Pages and API route handlers |
+| [src/app/api/posts](<src/app/api/posts>) | Post endpoints |
+| [src/app/api/auth](<src/app/api/auth>) | NextAuth configuration |
+| [src/lib/db.ts](<src/lib/db.ts>) | Database connection |
+| [package.json](<package.json>) | Runtime dependencies and scripts |
+
+## Local setup
+
+```bash
+git clone https://github.com/frontend-alex/shkolo-project.git
+cd shkolo-project
+npm install
+```
+
+Before starting the app, supply a MongoDB database and your own Google OAuth application credentials in .env.local:
+
+```dotenv
+MONGODB_LOCAL_URL=mongodb://127.0.0.1:27017/shkolo_local
+GOOGLE_ID=replace-with-your-client-id
+GOOGLE_CLINET_SECRET=replace-with-your-client-secret
+```
+
+GOOGLE_CLINET_SECRET is intentionally spelled as the current code reads it. Review the auth route and configure the provider's callback for your local host. The development server normally listens at http://localhost:3000. Use a Node.js runtime compatible with the checked-in Next.js 14 dependencies. Configure NextAuth's deployment URL and secret for any hosted environment.
+
+
+Start the development server after configuration:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Verification
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The manifest provides the following checks:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+npm run lint
+npm run build
+```
 
-## Learn More
+These commands were checked against the manifest; builds, browser flows, and external services were not executed for this documentation update.
 
-To learn more about Next.js, take a look at the following resources:
+## Limitations and next steps
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Review server-side authorization on post operations before exposing the app publicly.
+- A working Google sign-in flow requires a correctly registered OAuth client; UI rendering alone does not verify it.
+- No project-specific automated test script is declared.
+- Provider and database credentials belong in your own local configuration, not committed files.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Code review starting points
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [src/app/api/posts/create/route.ts](<src/app/api/posts/create/route.ts>)
+- [src/app/api/auth/[...nextauth]/route.ts](<src/app/api/auth/[...nextauth]/route.ts>)
+- [src/app/posts/page.tsx](<src/app/posts/page.tsx>)
